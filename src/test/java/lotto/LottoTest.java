@@ -22,4 +22,18 @@ class LottoTest {
     }
 
     // TODO: 추가 기능 구현에 따른 테스트 코드 작성
+    @DisplayName("로또 번호에 음수 또는 0이 존재하면 예외가 발생한다.")
+    @Test
+    void 로또_번호에_음수_또는_0이_존재하면_예외가_발생한다() {
+        assertThatThrownBy(() -> new Lotto(List.of(1, 2, 3, 4, -5, 0)))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @DisplayName("로또 번호가 46이상인 수가 존재하면 예외가 발생한다.")
+    @Test
+    void 로또_번호가_46이상인_수가_존재하면_예외가_발생한다() {
+        assertThatThrownBy(() -> new Lotto(List.of(1,2,3,4,47,48)))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
 }
